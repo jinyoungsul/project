@@ -13,5 +13,6 @@ public class LendReturnContents extends JPanel{
 		g.setColor(Color.BLACK);
 		g.drawString("대여반납 페이지", 450, 400);
 		System.out.println("커밋 테스트 - 현성");
+		System.out.println("커밋 테스트2 - 현성");
 	}
 }
