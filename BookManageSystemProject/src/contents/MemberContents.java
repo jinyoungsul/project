@@ -12,5 +12,6 @@ public class MemberContents extends JPanel{
 		super.paintComponent(g);
 		g.setColor(Color.BLACK);
 		g.drawString("회원페이지", 450, 400);
+		System.out.println("회원페이지 수정");
 	}
 }
