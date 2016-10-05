@@ -13,5 +13,6 @@ public class SalesContents extends JPanel{
 		super.paint(g);
 		g.setColor(Color.BLACK);
 		g.drawString("판매페이지", 450, 400);
+		System.out.println("커밋 테스트 - 설진영");
 	}
 }
