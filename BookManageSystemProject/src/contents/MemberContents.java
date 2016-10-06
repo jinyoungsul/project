@@ -13,5 +13,8 @@ public class MemberContents extends JPanel{
 		g.setColor(Color.BLACK);
 		g.drawString("회원페이지", 450, 400);
 		System.out.println("회원페이지 수정");
+		
+		
+		System.out.println("커밋 테스트 - 남규형");
 	}
 }
