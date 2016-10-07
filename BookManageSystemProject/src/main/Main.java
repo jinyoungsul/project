@@ -116,7 +116,7 @@ public class Main extends JFrame implements Runnable{
 			try {
 				Calendar calendar = Calendar.getInstance();
 				year = calendar.get(Calendar.YEAR);
-				month = calendar.get(Calendar.MONTH);
+				month = calendar.get(Calendar.MONTH)+1;
 				date = calendar.get(Calendar.DATE);
 				day = dayArray[calendar.get(Calendar.DAY_OF_WEEK)];
 				hour = calendar.get(Calendar.HOUR_OF_DAY);
