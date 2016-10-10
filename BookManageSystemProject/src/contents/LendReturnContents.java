@@ -1,6 +1,8 @@
 package contents;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,6 +14,7 @@ public class LendReturnContents extends JPanel{
 	private Font f1;
 	private JTextField textField;
 	public LendReturnContents() {
+		MyLisner lisner = new MyLisner();
 		f1 = new Font("bold", Font.BOLD,13 );
 		setLayout(null);
 		
@@ -95,6 +98,7 @@ public class LendReturnContents extends JPanel{
 		add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("회원검색");
+		btnNewButton_2.addActionListener(lisner);
 		btnNewButton_2.setBounds(810, 64, 120, 21);
 		add(btnNewButton_2);
 		
@@ -112,4 +116,15 @@ public class LendReturnContents extends JPanel{
 		g.drawString("회원정보", 30, 65);
 		g.drawString("도서코드", 690, 130);
 	}
+	
+	public class MyLisner implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			search s = new search();
+			
+		}
+		
+	}
+	
 }
