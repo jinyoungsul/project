@@ -1,17 +1,18 @@
 package contents;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import dao.MemberDAO;
+import dto.MemberDTO;
 
 public class MemberContents2 extends JDialog {
 	private JTextField textField;
@@ -89,6 +90,22 @@ public class MemberContents2 extends JDialog {
 		JButton btnNewButton = new JButton("가입");
 		btnNewButton.setFont(new Font("굴림", Font.BOLD, 14));
 		btnNewButton.setBounds(118, 328, 97, 36);
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String name = textField.getText();
+				String address = textField_2.getText();
+				String phoneNumber = textField_3.getText();
+				String birthday = textField_4.getText();
+				String comment = textField_5.getText();
+				MemberDAO dao = new MemberDAO();
+				MemberDTO member = new MemberDTO(name, address, phoneNumber, birthday, comment);
+				int result = dao.insertMember(member);
+				dispose();
+			}
+		});
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("취소");

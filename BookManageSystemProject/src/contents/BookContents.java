@@ -64,34 +64,34 @@ public class BookContents extends JPanel{
 		table.setFont(new Font("굴림", Font.PLAIN, 14));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, "", "", "", "", "", "", ""},
-				{null, null, null, null, null, "", null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null},
+				{null, null, "", "", "", "", "", "", ""},
+				{null, null, null, null, null, null, "", null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"\uBC88\uD638", "\uB3C4\uC11C\uBA85", "\uB300\uC5EC", "\uB300\uC5EC\uD69F\uC218", "\uC800\uC790", "\uBC1C\uD589\uC77C", "\uBD84\uC57C", "\uBE44\uACE0"
+				"NO", "\uB3C4\uC11C\uBC88\uD638", "\uB3C4\uC11C\uBA85", "\uB300\uC5EC", "\uB300\uC5EC\uD69F\uC218", "\uC800\uC790", "\uB4F1\uB85D\uC77C", "\uBD84\uC57C", "\uBE44\uACE0"
 			}
 		));
 	}
@@ -100,6 +100,8 @@ public class BookContents extends JPanel{
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paint(g);
+		g.setColor(Color.BLACK);
+		g.drawString("도서페이지", 450, 400);
 	}
 	class btn1Listener implements ActionListener{
 

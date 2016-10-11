@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Book_Resiteration extends JDialog {
 
@@ -65,7 +66,7 @@ public class Book_Resiteration extends JDialog {
 				panel.add(lblNewLabel_3);
 			}
 			{
-				JLabel lblNewLabel_4 = new JLabel("\uBC1C\uC0DD\uC77C");
+				JLabel lblNewLabel_4 = new JLabel("\uB4F1\uB85D\uC77C");
 				lblNewLabel_4.setBounds(76, 110, 57, 15);
 				panel.add(lblNewLabel_4);
 			}
@@ -105,6 +106,7 @@ public class Book_Resiteration extends JDialog {
 			}
 			{
 				JComboBox comboBox = new JComboBox();
+				comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "\uC21C\uC815", "\uBB34\uD611", "\uCD94\uB9AC", "\uC561\uC158", "\uC131\uC778"}));
 				comboBox.setBounds(116, 140, 200, 21);
 				panel.add(comboBox);
 			}
