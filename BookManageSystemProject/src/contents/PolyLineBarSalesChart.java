@@ -3,6 +3,7 @@ package contents;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -21,42 +22,35 @@ import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
 
+import dto.SalesDTO;
+
 public class PolyLineBarSalesChart {
 
-	public JFreeChart getChart() {
+	public JFreeChart getChart(ArrayList<Object[]> arrayList) {
 
 		// 데이터 생성
-		DefaultCategoryDataset dataset1 = new DefaultCategoryDataset(); // bar
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); // bar
 																		// chart
 																		// 1
 
 		// 데이터 입력 ( 값, 범례, 카테고리 )
 		// 그래프 1
-		dataset1.addValue(1.0, "S1", "1월");
-		dataset1.addValue(4.0, "S1", "2월");
-		dataset1.addValue(3.0, "S1", "3월");
-		dataset1.addValue(5.0, "S1", "4월");
-		dataset1.addValue(5.0, "S1", "5월");
-		dataset1.addValue(7.0, "S1", "6월");
-		dataset1.addValue(7.0, "S1", "7월");
-		dataset1.addValue(8.0, "S1", "8월");
-		dataset1.addValue(0, "S1", "9월");
-		dataset1.addValue(0, "S1", "10월");
-		dataset1.addValue(0, "S1", "11월");
-		dataset1.addValue(0, "S1", "12월");
-
+		
+		for(int i = 0;i<arrayList.size();i++){
+			Object[] data = arrayList.get(i);
+			dataset.addValue((int) data[1],"일매출" ,""+data[0] );
+		}
+		
+		
 		// 렌더링 생성 및 세팅
 		// 렌더링 생성
 		final BarRenderer renderer = new BarRenderer();
-		final BarRenderer renderer12 = new BarRenderer();
-		final LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
 
 		// 공통 옵션 정의
 		final CategoryItemLabelGenerator generator = new StandardCategoryItemLabelGenerator();
 		final ItemLabelPosition p_center = new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.CENTER);
-		final ItemLabelPosition p_below = new ItemLabelPosition(ItemLabelAnchor.OUTSIDE6, TextAnchor.TOP_LEFT);
 		Font f = new Font("Gulim", Font.BOLD, 14);
-		Font axisF = new Font("Gulim", Font.PLAIN, 14);
+		Font axisF = new Font("Gulim", Font.PLAIN, 10);
 
 		// 렌더링 세팅
 		// 그래프 1
@@ -71,30 +65,11 @@ public class PolyLineBarSalesChart {
 		// 0.0f, 0.0f, Color.blue));
 		renderer.setSeriesPaint(0, new Color(0, 162, 255));
 
-		// 그래프 2
-		renderer12.setSeriesPaint(0, new Color(232, 168, 255));
-		renderer12.setBaseItemLabelFont(f);
-		renderer12.setBasePositiveItemLabelPosition(p_center);
-		renderer12.setBaseItemLabelGenerator(generator);
-		renderer12.setBaseItemLabelsVisible(true);
-
-		// 그래프 3
-		renderer2.setBaseItemLabelGenerator(generator);
-		renderer2.setBaseItemLabelsVisible(true);
-		renderer2.setBaseShapesVisible(true);
-		renderer2.setDrawOutlines(true);
-		renderer2.setUseFillPaint(true);
-		renderer2.setBaseFillPaint(Color.WHITE);
-		renderer2.setBaseItemLabelFont(f);
-		renderer2.setBasePositiveItemLabelPosition(p_below);
-		renderer2.setSeriesPaint(0, new Color(219, 121, 22));
-		renderer2.setSeriesStroke(0, new BasicStroke(2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 3.0f));
-
 		// plot 생성
 		final CategoryPlot plot = new CategoryPlot();
 
 		// plot 에 데이터 적재
-		plot.setDataset(dataset1);
+		plot.setDataset(dataset);
 		plot.setRenderer(renderer);
 
 		// plot 기본 설정
@@ -108,7 +83,7 @@ public class PolyLineBarSalesChart {
 		// X축 세팅
 		plot.setDomainAxis(new CategoryAxis()); // X축 종류 설정
 		plot.getDomainAxis().setTickLabelFont(axisF); // X축 눈금라벨 폰트 조정
-		plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD); // 카테고리
+		plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.DOWN_45); // 카테고리
 																							// 라벨
 																							// 위치
 																							// 조정

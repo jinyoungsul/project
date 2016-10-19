@@ -22,12 +22,11 @@ public class Main extends JFrame implements Runnable{
 	private JPanel bottomPanel = new JPanel();
 	
 	private JLabel dateLabel = new JLabel();
-//	private Date date;
 	
-	private BookContents bookContentsPanel = new BookContents();
-	private LendReturnContents lendReturnContentsPanel = new LendReturnContents();
-	private MemberContents memberContentsPanel = new MemberContents();
-	private SalesContents salesContentsPanel = new SalesContents();
+//	private BookContents bookContentsPanel = new BookContents();
+//	private LendReturnContents lendReturnContentsPanel = new LendReturnContents();
+//	private MemberContents memberContentsPanel = new MemberContents();
+//	private SalesContents salesContentsPanel = new SalesContents();
 	
 	private Thread thread = new Thread(this);
 	public Main(){
@@ -73,25 +72,25 @@ public class Main extends JFrame implements Runnable{
 			
 			centerPanel.removeAll();
 			if(e.getSource()==memberBtn){
-				centerPanel.add(memberContentsPanel);
+				centerPanel.add(new MemberContents());
 				centerPanel.validate();
 				centerPanel.revalidate();
 				centerPanel.repaint();
 				System.out.println("멤버버튼");
 			} else if(e.getSource()==bookBtn){
-				centerPanel.add(bookContentsPanel);
+				centerPanel.add(new BookContents());
 				centerPanel.validate();
 				centerPanel.revalidate();
 				centerPanel.repaint();
 				System.out.println("북버튼");
 			} else if(e.getSource()==lendReturnBtn){
-				centerPanel.add(lendReturnContentsPanel);
+				centerPanel.add(new LendReturnContents());
 				centerPanel.validate();
 				centerPanel.revalidate();
 				centerPanel.repaint();
 				System.out.println("대여버튼");
 			} else if(e.getSource()==salesBtn){
-				centerPanel.add(salesContentsPanel);
+				centerPanel.add(new SalesContents());
 				centerPanel.validate();
 				centerPanel.revalidate();
 				centerPanel.repaint();

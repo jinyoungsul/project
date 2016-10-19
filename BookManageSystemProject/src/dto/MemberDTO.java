@@ -6,8 +6,7 @@ public class MemberDTO {
 	private String phoneNumber;
 	private String birthday;
 	private String comment;
-	private String memberNo;
-	public static int No=0;
+	private int memberNo;
 	
 	public MemberDTO(){
 		
@@ -19,8 +18,16 @@ public class MemberDTO {
 		this.phoneNumber = phoneNumber;
 		this.birthday = birthday;
 		this.comment = comment;
-		this.memberNo = MemberDTO.No+"";
-		MemberDTO.No++;
+		
+	}
+	public MemberDTO(int memberNo,String name, String address, String phoneNumber, String birthday, String comment) {
+		this.memberNo = memberNo;
+		this.name = name;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.birthday = birthday;
+		this.comment = comment;
+		
 	}
 	public String getName() {
 		return name;
@@ -52,10 +59,10 @@ public class MemberDTO {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getMemberNo() {
+	public int getMemberNo() {
 		return memberNo;
 	}
-	public void setMemberNo(String memberNo) {
+	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
 
