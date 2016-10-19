@@ -11,7 +11,7 @@ import dto.MemberDTO;
 
 public class MemberDAO {
 	private Connection getConnection(){
-		String url = "jdbc:mysql://localhost:3306/project";
+		String url = "jdbc:mysql://70.12.109.108:3306/project";
 		String user = "root";
 		String password = "sds902";
 		Connection con=null;
