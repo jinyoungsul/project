@@ -15,6 +15,7 @@ public class BookDao {
 
 	private Connection getConnection() {
 		String url = "jdbc:mysql://70.12.109.108:3306/project";
+//		String url = "jdbc:mysql://localhost:3306/project";
 		String user = "root";
 		String password = "sds902";
 //		String password = "root";
@@ -54,7 +55,7 @@ public class BookDao {
 		StringBuffer sb = new StringBuffer();
 		sb.append(
 				"insert into 도서(도서명,저자,등록일,분야,비고) ");
-		sb.append("values (?,?,?,?,?)");
+		sb.append("values (?,?,str_to_date(?,'%Y-%m-%d'),?,?)");
 
 		// 4.pstmt 생성
 		try {
@@ -89,7 +90,7 @@ public class BookDao {
 		//sql 작성
 		StringBuffer sb = new StringBuffer();
 		sb.append("update 도서  ");
-		sb.append("set 도서명 = ?,저자 = ?,등록일 = ?,분야 = ?,금액 = ?,비고 = ? ");
+		sb.append("set 도서명 = ?,저자 = ?,등록일 = str_to_date(?,'%Y-%m-%d'),분야 = ?,금액 = ?,비고 = ? ");
 		sb.append("where 도서번호 = ?");
 		
 		try {

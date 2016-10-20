@@ -1,34 +1,23 @@
 package contents;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.*;
 
-import dao.LendReturnDAO;
-import dao.MemberDAO;
-import dto.MemberDTO;
+import dao.*;
+import dto.*;
 
 public class search extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JLabel nameLable;
+	private JLabel phoneLable;
+	private JLabel memberNoLable;
 	private JTable table;
 	private DefaultTableModel model;
 	private ArrayList<MemberDTO> memberList = null;
@@ -44,6 +33,7 @@ public class search extends JFrame {
 		setLocation((int)screenSize.getWidth()/2-getWidth()/2, (int)screenSize.getHeight()/2-getHeight()/2);
 		getContentPane().setLayout(null);
 
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 584, 562);
 		getContentPane().add(panel);
@@ -68,9 +58,23 @@ public class search extends JFrame {
 		btnNewButton.setBounds(387, 91, 153, 30);
 		btnNewButton.addActionListener(listener);
 		panel.add(btnNewButton);
+		
+		nameLable = new JLabel("이름");
+		nameLable.setBounds(42, 79, 68, 55);
+		panel.add(nameLable);
+		
+		phoneLable = new JLabel("전화번호");
+		phoneLable.setBounds(42, 31, 100, 38);
+		panel.add(phoneLable);
+		
+		memberNoLable = new JLabel("회원번호");
+		memberNoLable.setBounds(291, 0, 100, 100);
+		panel.add(memberNoLable);
 
+		
+		
 		textField = new JTextField();
-		textField.setBounds(115, 36, 134, 30);
+		textField.setBounds(125, 36, 134, 30);
 		panel.add(textField);
 		textField.setColumns(10);
 
@@ -81,17 +85,12 @@ public class search extends JFrame {
 
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(115, 91, 134, 30);
+		textField_2.setBounds(125, 92, 134, 30);
 		panel.add(textField_2);
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.setColor(Color.BLACK);
-		g.setFont(f1);
-		g.drawString("전화번호", 55, 85);
-		g.drawString("회원번호", 327, 85);
-		g.drawString("이름", 55, 141);
 	}
 
 	public class MyLisner implements ActionListener {
@@ -114,6 +113,11 @@ public class search extends JFrame {
 				
 				model.addRow(new Object[]{memberList.get(i).getMemberNo(),memberList.get(i).getName(),memberList.get(i).getPhoneNumber(),memberList.get(i).getComment()});
 			}
+			DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+			tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			for(int c=0;c<table.getColumnCount();c++)
+				table.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 			table.validate();
 			table.revalidate();
 			table.repaint();
@@ -154,7 +158,11 @@ public class search extends JFrame {
 				lendReutrnContents.getModel().addRow(raw);
 				i++;
 			}
-			
+			DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+			tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			for(int c=0;c<lendReutrnContents.table_1.getColumnCount();c++)
+				lendReutrnContents.table_1.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 			dispose();
 			
 		}

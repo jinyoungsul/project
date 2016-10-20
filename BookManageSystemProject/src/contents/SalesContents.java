@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -207,6 +207,7 @@ public class SalesContents extends JPanel {
 				startDate = ""+startModel.getYear()+"-"+(startModel.getMonth()+1)+"-"+startModel.getDay();
 				endDate = ""+endModel.getYear()+"-"+(endModel.getMonth()+1)+"-"+endModel.getDay();
 				model.setRowCount(0);
+				System.out.println(startDate+" "+endDate);
 				printTable(startDate,endDate);
 			}
 		}
@@ -234,6 +235,11 @@ public class SalesContents extends JPanel {
 		moneyCountLabel.setText(""+sum);
 		bookCountLabel.setText(""+(num-1));
 		memberCountLabel.setText(""+memberCount);
+		DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+		tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		for(int c=0;c<salesTable.getColumnCount();c++)
+			salesTable.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 //		salesTable.getSelectionModel().addListSelectionListener(new TableListSelectionListener());		상세내용 보기
 		add(scrollPane);
 	}

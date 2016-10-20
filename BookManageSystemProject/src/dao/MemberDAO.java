@@ -12,8 +12,10 @@ import dto.MemberDTO;
 public class MemberDAO {
 	private Connection getConnection(){
 		String url = "jdbc:mysql://70.12.109.108:3306/project";
+//		String url = "jdbc:mysql://localhost:3306/project";
 		String user = "root";
 		String password = "sds902";
+//		String password = "root";
 		Connection con=null;
 		try {
 			//1. 드라이버 로딩
@@ -38,7 +40,7 @@ public class MemberDAO {
 		//3. sql문 작성
 		StringBuffer sb = new StringBuffer();
 		sb.append("insert into 회원(이름,주소,전화번호,생년월일,비고) ");
-		sb.append("values (?,?,?,?,?)");
+		sb.append("values (?,?,?,str_to_date(?,'%Y-%m-%d'),?)");
 		
 		//4.pstmt 생성
 		try {

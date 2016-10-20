@@ -10,14 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.*;
 
 import dao.BookDao;
 import dao.LendReturnDAO;
@@ -25,7 +19,7 @@ import dto.BookDTO;
 import dto.LendReturnDTO;
 
 public class LendReturnContents extends JPanel {
-	private JTable table_1;
+	public JTable table_1;
 	public JTable table_2;
 	private Font f1;
 	private JTextField textField;
@@ -85,6 +79,11 @@ public class LendReturnContents extends JPanel {
 						Object[] raw = { i, lendReturnNo, bookName, author, receivelendDate, receivereturnDate,
 								isOverdue, money };
 						model.addRow(raw);
+						DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+						tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+						for(int c=0;c<table_1.getColumnCount();c++)
+							table_1.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 						i++;
 					}
 				}
@@ -141,6 +140,11 @@ public class LendReturnContents extends JPanel {
 							Object[] raw = { i, lendReturnNo, bookName, author, receivelendDate, receivereturnDate,
 									isOverdue, money };
 							model.addRow(raw);
+							DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+							tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+							for(int c=0;c<table_1.getColumnCount();c++)
+								table_1.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 							i++;
 						}
 					}

@@ -16,8 +16,10 @@ public class SalesDAO {
 			//1. 드라이버 로딩
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://70.12.109.108:3306/project";
+//			String url = "jdbc:mysql://localhost:3306/project";
 			String user = "root";
 			String password = "sds902";
+//			String password = "root";
 			
 			//2. 커넥션 연결
 			con = DriverManager.getConnection(url, user, password);

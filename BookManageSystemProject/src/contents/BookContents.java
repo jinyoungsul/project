@@ -12,18 +12,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 
 import dao.BookDao;
 import dao.MemberDAO;
@@ -155,20 +147,25 @@ public class BookContents extends JPanel {
 			bookList = new BookDao().searchBook();
 		}
 		Iterator<BookDTO> e = bookList.iterator();
-
+		
 		while (e.hasNext()) {
 			book = (BookDTO) e.next();
 			model.addRow(new Object[] { i, book.getBookNumber(), book.getTitle(), book.getLending(),
 					book.getLendingNumber(), book.getAuthor(), book.getPublicationDate(), book.getType(),
 					book.getMoney(), book.getComment() });
+			
 			i++;
-
 		}
 		table.getColumnModel().getColumn(0).setPreferredWidth(15);
 		table.getColumnModel().getColumn(1).setPreferredWidth(30);
 		table.getColumnModel().getColumn(2).setPreferredWidth(130);
 		table.getColumnModel().getColumn(3).setPreferredWidth(40);
 		table.getColumnModel().getColumn(4).setPreferredWidth(40);
+		DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+		tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		for(int c=0;c<table.getColumnCount();c++)
+			table.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+		
 		scrollPane.setViewportView(table);
 	}
 

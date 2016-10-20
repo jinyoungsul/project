@@ -14,9 +14,10 @@ public class LendReturnDAO {
 	public Connection getConnection(){
 		Connection con = null;
 		String url = "jdbc:mysql://70.12.109.108:3306/project";
+//		String url = "jdbc:mysql://localhost:3306/project";
 		String user = "root";
 		String password = "sds902";
-		
+//		String password = "root";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, password);
@@ -36,10 +37,11 @@ public class LendReturnDAO {
 		//3.sql 작성
 		StringBuffer sb = new StringBuffer();
 		sb.append("insert into 대여(회원번호,도서번호,대여일자,반납일자,대여금액) ");
-		sb.append("values (?,?,?,?,?) ");
+		sb.append("values (?,?,str_to_date(?,'%Y-%m-%d'),str_to_date(?,'%Y-%m-%d'),?) ");
 		//4. pstmt 생성
 		try {
 			pstmt = con.prepareStatement(sb.toString());
+			System.out.println(sb.toString());
 			pstmt.setInt(1, lendReturn.getMemberNo());
 			pstmt.setInt(2, lendReturn.getBookNo());
 			pstmt.setString(3, lendReturn.getLendDate());

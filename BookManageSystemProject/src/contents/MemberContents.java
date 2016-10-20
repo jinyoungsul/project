@@ -7,15 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.*;
 
 import dao.MemberDAO;
 import dto.MemberDTO;
@@ -175,6 +168,11 @@ public class MemberContents extends JPanel {
 					member.getPhoneNumber(), member.getBirthday(), member.getComment() });
 			i++;
 		}
+		DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
+		tableCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		for(int c=0;c<table.getColumnCount();c++)
+			table.getColumnModel().getColumn(c).setCellRenderer(tableCellRenderer);
+
 		scrollPane.setViewportView(table);
 
 	}
