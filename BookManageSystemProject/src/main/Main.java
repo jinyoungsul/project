@@ -2,9 +2,13 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.*;
 import java.util.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import contents.*;
@@ -16,13 +20,12 @@ public class Main extends JFrame implements Runnable{
 	private JButton bookBtn = new JButton("도서관리");
 	private JButton lendReturnBtn = new JButton("대여반납 관리");
 	private JButton salesBtn = new JButton("매출관리");
-	
 	private JPanel btnPanel = new JPanel();
-	private JPanel centerPanel = new JPanel();
+	private JPanel centerPanel;
 	private JPanel bottomPanel = new JPanel();
-	
 	private JLabel dateLabel = new JLabel();
 	
+	private BufferedImage img = null;
 //	private BookContents bookContentsPanel = new BookContents();
 //	private LendReturnContents lendReturnContentsPanel = new LendReturnContents();
 //	private MemberContents memberContentsPanel = new MemberContents();
@@ -30,6 +33,12 @@ public class Main extends JFrame implements Runnable{
 	
 	private Thread thread = new Thread(this);
 	public Main(){
+		try {
+			img = ImageIO.read(new File("library.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("도서대여관리 System");
 		setSize(989,800);
@@ -52,6 +61,14 @@ public class Main extends JFrame implements Runnable{
 		btnPanel.add(lendReturnBtn);
 		btnPanel.add(salesBtn);
 		
+		centerPanel = new JPanel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				// TODO Auto-generated method stub
+				super.paintComponent(g);
+				g.drawImage(img, 0, 0, null);
+			}
+		};
 		centerPanel.setBounds(0, 84, 984, 639);
 		centerPanel.setLayout(new BorderLayout());
 		getContentPane().add(centerPanel);

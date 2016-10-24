@@ -1,12 +1,18 @@
 package contents;
 
+import java.awt.AlphaComposite;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -97,7 +103,8 @@ public class MemberContents extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
-		super.paintComponent(g);
+	    super.paintComponent(g);
+		
 	}
 
 	class MyBtnListener implements ActionListener {

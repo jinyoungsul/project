@@ -270,7 +270,7 @@ public class BookDao {
 		}
 		return bookList;
 	}
-	public ArrayList<BookDTO> searchBook(String receiveAuthor) {
+	public ArrayList<BookDTO> searchKeywordAuthor(String receiveAuthor) {
 		Connection con = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

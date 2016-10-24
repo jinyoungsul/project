@@ -23,7 +23,6 @@ public class LendReturnContents extends JPanel {
 	public JTable table_2;
 	private Font f1;
 	private JTextField textField;
-	private ResultSet rs = null;
 	public DefaultTableModel model21, model;
 	private LendReturnContents lendReturnContents;
 
@@ -47,7 +46,7 @@ public class LendReturnContents extends JPanel {
 		table_2.setBounds(29, 74, 269, 64);
 		//////////////////////////////////////////////
 		table_2.setModel(new DefaultTableModel(
-				new Object[][] { { "회원번호", null }, { "이름", null }, { "휴대폰", null }, { "주소", null }, },
+				new Object[][] { { "회원번호", null }, { "이름", null }, { "휴대폰", null }, { "비고", null }, },
 				new String[] { "", "" }));
 		///////////////////
 		add(table_2);

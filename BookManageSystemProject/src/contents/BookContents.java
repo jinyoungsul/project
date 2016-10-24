@@ -39,11 +39,11 @@ public class BookContents extends JPanel {
 		setSize(900, 600);
 
 		JLabel lblNewLabel = new JLabel("도서검색");
-		lblNewLabel.setBounds(70, 60, 57, 15);
+		lblNewLabel.setBounds(29, 60, 57, 15);
 		add(lblNewLabel);
 
 		textField = new JTextField();
-		textField.setBounds(70, 80, 250, 25);
+		textField.setBounds(29, 80, 250, 25);
 		add(textField);
 		textField.setColumns(10);
 
@@ -56,15 +56,15 @@ public class BookContents extends JPanel {
 				selectTable();
 			}
 		});
-		btnNewButton.setBounds(390, 80, 100, 25);
+		btnNewButton.setBounds(285, 80, 100, 25);
 		add(btnNewButton);
 
 		JLabel lblNewLabel_1 = new JLabel("저자검색");
-		lblNewLabel_1.setBounds(70, 130, 57, 15);
+		lblNewLabel_1.setBounds(29, 130, 57, 15);
 		add(lblNewLabel_1);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(70, 155, 250, 25);
+		textField_1.setBounds(29, 155, 250, 25);
 		add(textField_1);
 		textField_1.setColumns(10);
 
@@ -77,21 +77,21 @@ public class BookContents extends JPanel {
 				selectTable();
 			}
 		});
-		btnNewButton_1.setBounds(390, 153, 100, 25);
+		btnNewButton_1.setBounds(285, 153, 100, 25);
 		add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("도서등록");
-		btnNewButton_2.setBounds(721, 78, 150, 25);
+		btnNewButton_2.setBounds(786, 78, 150, 25);
 		add(btnNewButton_2);
 
 		btnNewButton_3 = new JButton("도서수정/삭제");
-		btnNewButton_3.setBounds(721, 153, 150, 25);
+		btnNewButton_3.setBounds(786, 153, 150, 25);
 		add(btnNewButton_3);
 
 		btnNewButton_2.addActionListener(new btn1Listener());
 		btnNewButton_3.addActionListener(new btn1Listener());
 
-		scrollPane.setBounds(70, 246, 801, 354);
+		scrollPane.setBounds(29, 221, 907, 334);
 		add(scrollPane);
 
 		selectTable();
@@ -142,7 +142,8 @@ public class BookContents extends JPanel {
 			bookList = new BookDao().searchKeywordBook(title);
 		} else if(  textField_1.getText().length()>0){
 			String author = textField_1.getText();
-			bookList = new BookDao().searchKeywordBook(author);
+			System.out.println(author);
+			bookList = new BookDao().searchKeywordAuthor(author);
 		} else {
 			bookList = new BookDao().searchBook();
 		}
